@@ -102,8 +102,9 @@ export default function Home() {
 					))}
 				</div>
 				<div className="flex flex-col md:flex-row text-sm md:justify-between gap-2">
-					<p>Registered UK Company Number: 15988228</p>
-					<p>ICO Reference Number: ZB857511</p>
+					<p>© 2025 Originoid LTD</p>
+					<p>Registered UK Company No. 15988228</p>
+					<p>ICO Reference No. ZB857511</p>
 					<p>124 City Road, London, England, EC1V 2NX</p>
 				</div>
 			</div>

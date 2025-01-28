@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# originoid.ltd
 
-## Getting Started
+Our one-page site showcasing Originoid LTD's projects and vision.
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. `gh repo clone originoidco/ltd`
+2. `pnpm i`
+3. `pnpm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Terms of Use & License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This software is licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Users must provide credit to Originoid LTD and a URL to the original repository
+- All Originoid LTD branding, logos, and visual assets must be removed from derivative works
+- References to Originoid LTD and associated projects must be removed, except for the required attribution
+- All significant modifications must be explicitly documented
 
-## Learn More
+These additional terms are provided under Section 7 of AGPLv3. The full text of AGPLv3 applies to this software and must be included with any distribution.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+© 2025 Originoid LTD | Registered UK Company No. 15988228 | ICO Reference No. ZB857511
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+124 City Road, London, EC1V 2NX | legal@originoid.co
