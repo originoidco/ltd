@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* https://coolors.co/palette/e7ecef-274c77-6096ba-a3cef1-8b8c89 */
+:root {
+	--background: #274c77;
+	--foreground: #a3cef1;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #274c77;
+		--foreground: #a3cef1;
+	}
+}
+
+body {
+	color: var(--foreground);
+	background: var(--background);
+	font-family: "Lora", sans-serif;
+}
+
+@layer base {
+	::-moz-selection {
+		@apply bg-white text-background;
+	}
+	::selection {
+		@apply bg-white text-background;
+	}
+}
