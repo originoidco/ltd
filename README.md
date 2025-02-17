@@ -2,8 +2,6 @@
 
 Our one-page site showcasing Originoid LTD's projects and vision.
 
-Credits to [fancycomponents](https://fancycomponents.dev) for the pixel trail animation.
-
 ## Development
 
 1. `gh repo clone originoidco/ltd`

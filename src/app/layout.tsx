@@ -7,6 +7,7 @@ const geistSans = GeistSans
 
 const instrumentSerif = Instrument_Serif({
 	weight: ["400"],
+	subsets: ["latin"],
 	variable: "--font-instrument-serif",
 })
 
