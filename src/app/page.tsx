@@ -7,66 +7,66 @@ type Project = {
 	link: string
 	stats: string
 	icon: string
+	release: string
+	backgroundUrl?: string
 }
 
 const projectsList: Project[] = [
 	{
 		name: "Originoid",
-		description: "Creators-first sharing platform",
+		description:
+			"Originoid is a platform built for creators: share and link any type of content, fully customizable, while your work is kept secure and protected.",
 		link: "https://originoid.co?ref=originoidltd",
-		stats: "18,700+ creators on waitlist",
+		stats: "19,000+ Waitlisted",
 		icon: "/app-icons/originoid-icon-1028.png",
+		release: "Releasing 2025",
 	},
 	{
 		name: "wanderer.moe",
-		description: "Centralized game asset database",
+		description:
+			"wanderer.moe is a completely free to use centralized database website for easily searching and downloading thousands of assets across various games.",
 		link: "https://wanderer.moe?ref=originoidltd",
-		stats: "300,000+ monthly active users",
+		stats: "300,000+ MAU",
 		icon: "/app-icons/wanderer-moe-icon-1028.png",
+		release: "Founded 2023",
+		backgroundUrl:
+			"https://cdn.marcel.best/ShareX/2025/03/wanderer-moe-card-zoom.png",
 	},
 ]
 
 export default function Home() {
 	return (
-		<div className="w-full min-h-screen flex items-center justify-center">
-			<div className="md:py-24 md:px-16 py-16 px-8">
-				<div className="flex flex-col gap-8 max-w-4xl mx-auto">
-					<img
-						src="/app-icons/originoid-icon-1028.png"
-						className="size-16"
-					/>
-
-					<div className="flex flex-col gap-6 text-xl">
-						<p className="text-4xl font-bold text-white font-instrument-serif">
-							Originoid LTD builds digital platforms that serve
-							millions of users worldwide.
-						</p>
-
-						<div className="space-y-4 text-zinc-400 tracking-tight">
-							<p>
-								We exclusively make tools that benefit creators
-								and solve real-world problems that millions face
-								day to day.
-							</p>
-							<p>
-								While others pursue quick wins, we are committed
-								to the long haul, and here to stay.
-							</p>
-							<p>
-								Want to partner? Reach out to{" "}
-								<Link
-									href="mailto:partnerships@originoid.co"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-white hover:text-zinc-600 transition-all duration-150"
-								>
-									partnerships@originoid.co
-								</Link>
-							</p>
-						</div>
+		<div className="w-full min-h-screen flex items-center justify-center text-white">
+			<div className="md:py-12 md:px-16 py-10 px-8 w-full max-w-4xl mx-auto">
+				<div className="flex flex-col gap-6 mb-12">
+					<div className="flex items-center gap-3">
+						<img
+							src="/app-icons/originoid-icon-1028.png"
+							className="size-10"
+							alt="Originoid"
+						/>
 					</div>
 
-					<div className="flex flex-col sm:flex-row gap-8 text-white z-10">
+					<div className="flex flex-col gap-2">
+						<p className="text-xl text-zinc-400 tracking-tight">
+							Originoid LTD makes software and platforms that
+							serve millions of users worldwide.
+						</p>
+						<p className="text-zinc-400 text-sm">
+							Want to partner?{" "}
+							<Link
+								href="mailto:hello@originoid.co"
+								className="text-white"
+							>
+								Reach out
+							</Link>
+							.
+						</p>
+					</div>
+				</div>
+
+				<div className="mb-12">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{projectsList.map((project, index) => (
 							<Link
 								href={project.link}
@@ -80,34 +80,51 @@ export default function Home() {
 										.replace(".", "-")
 								}
 								rel="noopener noreferrer"
-								className="group hover:scale-105 p-4 rounded-lg w-full transition-all duration-200"
+								className={`rounded-md overflow-hidden h-[450px] relative group`}
+								style={{
+									background: project.backgroundUrl
+										? `url(${project.backgroundUrl}) no-repeat center/cover`
+										: "linear-gradient(to bottom right, #040606, #2C3D44)",
+								}}
 							>
-								<div className="flex flex-row gap-4 items-center">
-									<img
-										src={project.icon}
-										className="size-20 rounded-lg transition-transform duration-200"
-									/>
-									<div className="flex flex-col gap-1">
-										<p className="font-bold text-lg">
-											{project.name}
-										</p>
-										<p className="">
+								<div className="relative p-6 flex justify-between items-start h-full flex-col">
+									<div className="w-full flex justify-between items-center">
+										<div className="flex items-center gap-3">
+											<img
+												src={project.icon}
+												className="size-12 rounded-xl"
+												alt={project.name}
+											/>
+											<div>
+												<p className="font-medium text-lg text-white">
+													{project.name}
+												</p>
+												<p className="text-sm text-white/80">
+													{project.release}
+												</p>
+											</div>
+										</div>
+									</div>
+
+									<div className="mt-auto">
+										<p className="text-white mb-4 max-w-xs">
 											{project.description}
 										</p>
-										<p className="text-xs">
+
+										<div className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm text-white">
 											{project.stats}
-										</p>
+										</div>
 									</div>
 								</div>
 							</Link>
 						))}
 					</div>
-					<div className="flex flex-col md:flex-row text-sm md:justify-between gap-2 text-zinc-400">
-						<p> 2025 Originoid LTD</p>
-						<p>Registered UK Company No. 15988228</p>
-						<p>ICO Reference No. ZB857511</p>
-						{/* <p>124 City Road, London, England, EC1V 2NX</p> */}
-					</div>
+				</div>
+
+				<div className="flex flex-col md:flex-row text-sm md:justify-between gap-2 text-zinc-600 pt-4">
+					<p> 2025 Originoid LTD</p>
+					<p>Registered UK Company No. 15988228</p>
+					<p>ICO Reference No. ZB857511</p>
 				</div>
 			</div>
 		</div>
