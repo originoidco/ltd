@@ -52,15 +52,16 @@ export default function Home() {
 							Originoid LTD makes software and platforms that
 							serve millions of users worldwide.
 						</p>
+
 						<p className="text-zinc-400 text-sm">
-							Want to partner?{" "}
+							Hiring Site & Discord Staff:{" "}
 							<Link
-								href="mailto:hello@originoid.co"
-								className="text-white"
+								href="/apply"
+								target="_blank"
+								className="text-white hover:text-zinc-600 transition-all duration-150 ease-in-out"
 							>
-								Reach out
+								Apply Here
 							</Link>
-							.
 						</p>
 					</div>
 				</div>
@@ -80,14 +81,27 @@ export default function Home() {
 										.replace(".", "-")
 								}
 								rel="noopener noreferrer"
-								className={`rounded-md overflow-hidden h-[450px] relative group`}
-								style={{
-									background: project.backgroundUrl
-										? `url(${project.backgroundUrl}) no-repeat center/cover`
-										: "linear-gradient(to bottom right, #040606, #2C3D44)",
-								}}
+								className="rounded-md overflow-hidden h-[450px] relative group transition-all duration-150 ease-in-out"
 							>
-								<div className="relative p-6 flex justify-between items-start h-full flex-col">
+								
+								<div
+									className={`
+										absolute inset-0 z-0
+										transition-all duration-200
+										origin-center
+										${project.backgroundUrl ? '' : 'bg-gradient-to-br from-[#040606] to-[#2C3D44]'}
+										${project.backgroundUrl ? 'bg-cover bg-center' : ''}
+										group-hover:scale-110
+									`}
+									style={{
+										backgroundImage: project.backgroundUrl
+											? `url(${project.backgroundUrl})`
+											: undefined,
+									}}
+								/>
+
+								
+								<div className="relative z-10 p-6 flex justify-between items-start h-full flex-col transition-all duration-200 bg-black/10">
 									<div className="w-full flex justify-between items-center">
 										<div className="flex items-center gap-3">
 											<img
