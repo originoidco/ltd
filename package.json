@@ -11,6 +11,8 @@
 		"prettier:c": "prettier --check ."
 	},
 	"dependencies": {
+		"@paper-design/shaders": "^0.0.32",
+		"@paper-design/shaders-react": "0.0.33",
 		"@types/lodash": "^4.17.15",
 		"@types/uuid": "^10.0.0",
 		"class-variance-authority": "^0.7.1",
