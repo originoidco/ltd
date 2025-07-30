@@ -22,10 +22,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     backgroundImage: project.backgroundUrl
                         ? `url(${project.backgroundUrl})`
                         : undefined,
+                    backgroundPosition: "center",
                 }}
+                // translate bg image by like moving right 10px
             />
 
-            <div className="relative z-10 p-6 flex justify-between items-start h-full flex-col transition-all duration-200 bg-black/10 hover:bg-black/20">
+            <div className="relative z-10 p-6 flex justify-between items-start h-full flex-col transition-all duration-200 bg-black/30 hover:bg-black/20">
                 <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3">
                         <img

@@ -8,7 +8,7 @@ export const projectsList: Project[] = [
         link: "https://originoid.co?ref=originoidltd",
         stats: "26,100+ Waitlisted Creators",
         icon: "/app-icons/originoid-icon-1028.png",
-        release: "Releasing Soon",
+        release: "Releasing August 2025",
     },
     {
         name: "wanderer.moe",
@@ -18,7 +18,6 @@ export const projectsList: Project[] = [
         stats: "300,000+ MAU",
         icon: "/app-icons/wanderer-moe-icon-1028.png",
         release: "Founded 2023",
-        backgroundUrl:
-            "https://cdn.marcel.best/ShareX/2025/05/wrm-ihatefigma.png", // lmfao
+        backgroundUrl: "https://cdn.marcel.best/temp/wm-new.png",
     },
 ];
