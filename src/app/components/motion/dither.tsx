@@ -1,7 +1,7 @@
 "use client";
 import { Dithering } from "@paper-design/shaders-react";
 
-export function BackgroundDither() {
+export default function Dither() {
     return (
         <div className="absolute inset-0 h-full w-full">
             <Dithering

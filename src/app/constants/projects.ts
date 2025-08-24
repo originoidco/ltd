@@ -8,7 +8,7 @@ export const projectsList: Project[] = [
         link: "https://originoid.co?ref=originoidltd",
         stats: "26,100+ Waitlisted Creators",
         icon: "/app-icons/originoid-icon-1028.png",
-        release: "Releasing August 2025",
+        release: "Releasing ??? 2025",
     },
     {
         name: "skowt.cc",

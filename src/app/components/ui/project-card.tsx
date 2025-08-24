@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Project } from "../types";
+import { Project } from "../../types";
 
 interface ProjectCardProps {
     project: Project;
@@ -12,19 +12,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
             target="_blank"
             key={project.name.replace(/[\s.]/g, "-").toLowerCase()}
             rel="noopener noreferrer"
-            className="rounded-md overflow-hidden h-[450px] relative group transition-all duration-150 ease-in-out"
+            className="rounded-md text-left overflow-hidden h-[450px] relative group transition-all duration-150 ease-in-out"
         >
             <div
                 className={`absolute inset-0 z-0 transition-all duration-150 ease-in-out origin-center
-				${project.backgroundUrl ? "bg-cover bg-center" : "bg-gradient-to-br from-[#040606] to-[#2C3D44]"}
-				group-hover:scale-105`}
+                ${project.backgroundUrl ? "bg-cover bg-center" : "bg-gradient-to-br from-[#040606] to-[#2C3D44]"}`}
                 style={{
                     backgroundImage: project.backgroundUrl
                         ? `url(${project.backgroundUrl})`
                         : undefined,
                     backgroundPosition: "center",
                 }}
-                // translate bg image by like moving right 10px
             />
 
             <div className="relative z-10 p-6 flex justify-between items-start h-full flex-col transition-all duration-200 bg-black/30 hover:bg-black/20">
