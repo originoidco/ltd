@@ -3,6 +3,7 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { Open_Sans, Instrument_Serif } from "next/font/google";
 import PillNav from "./components/nav/nav";
+import LenisProvider from "./components/providers/lenis-provider";
 
 const geistSans = GeistSans;
 
@@ -34,27 +35,24 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${openSans.variable} ${instrumentSerif.variable} antialiased w-full`}
             >
-                <PillNav
-                    logo={"/originoid-dark.svg"}
-                    logoAlt="logo"
-                    // initialLoadAnimation={true}
-                    items={[
-                        { label: "Home", href: "/#" },
-                        { label: "Projects", href: "/#projects" },
-                        {
-                            label: "Socials",
-                            href: "/#socials",
-                        },
-                    ]}
-                    activeHref="/"
-                    className="custom-nav"
-                    ease="power2.easeOut"
-                    baseColor="#ffffff"
-                    pillColor="#0C0A09"
-                    hoveredPillTextColor="#0C0A09"
-                    pillTextColor="#ffffff"
-                />
-                {children}
+                <LenisProvider>
+                    <PillNav
+                        logo={"/originoid-dark.svg"}
+                        logoAlt="logo"
+                        items={[
+                            { label: "Home", href: "/#" },
+                            { label: "Projects", href: "/#projects" },
+                            {
+                                label: "Socials",
+                                href: "/#socials",
+                            },
+                        ]}
+                        activeHref="/"
+                        className="custom-nav"
+                        ease="power2.easeOut"
+                    />
+                    {children}
+                </LenisProvider>
             </body>
         </html>
     );

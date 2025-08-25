@@ -40,6 +40,8 @@ const PillNav: React.FC<PillNavProps> = ({
 }) => {
     const resolvedPillTextColor = pillTextColor ?? baseColor;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [colorMix, setColorMix] = useState(0); // 0 = dark theme, 1 = light theme
+    const navRef = useRef<HTMLElement>(null);
     const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
     const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
     const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
@@ -49,6 +51,93 @@ const PillNav: React.FC<PillNavProps> = ({
     const mobileMenuRef = useRef<HTMLDivElement | null>(null);
     const navItemsRef = useRef<HTMLDivElement | null>(null);
     const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
+
+    // exact navbar position-based theme detection
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!navRef.current) return;
+
+            const navRect = navRef.current.getBoundingClientRect();
+            const navCenter = navRect.top + navRect.height / 2;
+
+            // get all sections
+            const heroSection = document.getElementById("hero");
+            const statsSection = document.getElementById("stats");
+            const projectsSection = document.getElementById("projects");
+            const socialsSection = document.getElementById("socials");
+
+            if (
+                !heroSection ||
+                !statsSection ||
+                !projectsSection ||
+                !socialsSection
+            )
+                return;
+
+            // check which section the navbar center is over
+            let targetTheme = 0; // default to light navbar
+
+            const heroRect = heroSection.getBoundingClientRect();
+            const statsRect = statsSection.getBoundingClientRect();
+            const projectsRect = projectsSection.getBoundingClientRect();
+            const socialsRect = socialsSection.getBoundingClientRect();
+
+            if (navCenter >= heroRect.top && navCenter <= heroRect.bottom) {
+                targetTheme = 0; // light navbar for dark hero section
+            } else if (
+                navCenter >= statsRect.top &&
+                navCenter <= statsRect.bottom
+            ) {
+                targetTheme = 1; // dark navbar for light stats section
+            } else if (
+                navCenter >= projectsRect.top &&
+                navCenter <= projectsRect.bottom
+            ) {
+                targetTheme = 0; // light navbar for dark projects section
+            } else if (
+                navCenter >= socialsRect.top &&
+                navCenter <= socialsRect.bottom
+            ) {
+                targetTheme = 1; // dark navbar for light socials section
+            }
+
+            // only animate if theme actually changed
+            if (Math.abs(targetTheme - colorMix) > 0.1) {
+                gsap.to(
+                    { mix: colorMix },
+                    {
+                        mix: targetTheme,
+                        duration: 0.3,
+                        ease: "power2.out",
+                        onUpdate: function () {
+                            setColorMix(this.targets()[0].mix);
+                        },
+                    },
+                );
+            }
+        };
+
+        // use requestAnimationFrame for smooth updates
+        let ticking = false;
+        const optimizedScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener("scroll", optimizedScroll, { passive: true });
+        window.addEventListener("resize", optimizedScroll, { passive: true });
+        handleScroll(); // initial call
+
+        return () => {
+            window.removeEventListener("scroll", optimizedScroll);
+            window.removeEventListener("resize", optimizedScroll);
+        };
+    }, [colorMix]);
 
     useEffect(() => {
         const layout = () => {
@@ -217,16 +306,31 @@ const PillNav: React.FC<PillNavProps> = ({
         if (hamburger) {
             const lines = hamburger.querySelectorAll(".hamburger-line");
             if (newState) {
-                gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
+                gsap.to(lines[0], {
+                    rotation: 45,
+                    y: 3,
+                    duration: 0.2,
+                    ease: "power2.out",
+                });
                 gsap.to(lines[1], {
                     rotation: -45,
                     y: -3,
-                    duration: 0.3,
-                    ease,
+                    duration: 0.2,
+                    ease: "power2.out",
                 });
             } else {
-                gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-                gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+                gsap.to(lines[0], {
+                    rotation: 0,
+                    y: 0,
+                    duration: 0.15,
+                    ease: "power2.out",
+                });
+                gsap.to(lines[1], {
+                    rotation: 0,
+                    y: 0,
+                    duration: 0.15,
+                    ease: "power2.out",
+                });
             }
         }
 
@@ -273,11 +377,53 @@ const PillNav: React.FC<PillNavProps> = ({
 
     const isRouterLink = (href?: string) => href && !isExternalLink(href);
 
+    // smooth color interpolation using mix value (0 = dark theme, 1 = light theme)
+    const interpolateColor = (
+        darkColor: string,
+        lightColor: string,
+        mix: number,
+    ) => {
+        // simple rgb interpolation
+        const dark = {
+            r: parseInt(darkColor.slice(1, 3), 16),
+            g: parseInt(darkColor.slice(3, 5), 16),
+            b: parseInt(darkColor.slice(5, 7), 16),
+        };
+        const light = {
+            r: parseInt(lightColor.slice(1, 3), 16),
+            g: parseInt(lightColor.slice(3, 5), 16),
+            b: parseInt(lightColor.slice(5, 7), 16),
+        };
+
+        const r = Math.round(dark.r + (light.r - dark.r) * mix);
+        const g = Math.round(dark.g + (light.g - dark.g) * mix);
+        const b = Math.round(dark.b + (light.b - dark.b) * mix);
+
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    // smooth dynamic colors based on colorMix (flipped: 0 = light theme, 1 = dark theme)
+    const dynamicBaseColor = interpolateColor("#ffffff", "#0C0A09", colorMix);
+    const dynamicPillColor = interpolateColor("#0C0A09", "#ffffff", colorMix);
+    const dynamicHoverTextColor = interpolateColor(
+        "#0C0A09",
+        "#ffffff",
+        colorMix,
+    );
+    const dynamicPillTextColor = interpolateColor(
+        "#ffffff",
+        "#0C0A09",
+        colorMix,
+    );
+
+    // svg inversion logic - invert when background is dark (since default svg is dark)
+    const shouldInvertSvg = colorMix > 0.5;
+
     const cssVars = {
-        ["--base"]: baseColor,
-        ["--pill-bg"]: pillColor,
-        ["--hover-text"]: hoveredPillTextColor,
-        ["--pill-text"]: resolvedPillTextColor,
+        ["--base"]: dynamicBaseColor,
+        ["--pill-bg"]: dynamicPillColor,
+        ["--hover-text"]: dynamicHoverTextColor,
+        ["--pill-text"]: dynamicPillTextColor,
         ["--nav-h"]: "42px",
         ["--logo"]: "36px",
         ["--pill-pad-x"]: "18px",
@@ -285,9 +431,10 @@ const PillNav: React.FC<PillNavProps> = ({
     } as React.CSSProperties;
 
     return (
-        <div className="fixed top-[1em] left-1/2 transform -translate-x-1/2 z-[1000] w-auto">
+        <div className="fixed top-[1em] left-1/2 transform -translate-x-1/2 z-[1000] w-full md:w-auto px-4 md:px-0">
             <nav
-                className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
+                ref={navRef}
+                className={`w-full md:w-max flex items-center justify-between md:justify-start box-border ${className}`}
                 aria-label="Primary"
                 style={cssVars}
             >
@@ -311,7 +458,7 @@ const PillNav: React.FC<PillNavProps> = ({
                             src={logo}
                             alt={logoAlt}
                             ref={logoImgRef}
-                            className="w-full h-full object-cover block"
+                            className={`w-full h-full object-cover block transition-all duration-75 ${shouldInvertSvg ? "invert" : ""}`}
                         />
                     </Link>
                 ) : (
@@ -333,7 +480,7 @@ const PillNav: React.FC<PillNavProps> = ({
                             src={logo}
                             alt={logoAlt}
                             ref={logoImgRef}
-                            className="w-full h-full object-cover block"
+                            className={`w-full h-full object-cover block transition-all duration-75 ${shouldInvertSvg ? "invert" : ""}`}
                         />
                     </a>
                 )}
@@ -475,7 +622,7 @@ const PillNav: React.FC<PillNavProps> = ({
 
             <div
                 ref={mobileMenuRef}
-                className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
+                className="md:hidden absolute top-[3em] left-0 right-0 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
                 style={{
                     ...cssVars,
                     background: "var(--base, #f0f0f0)",

@@ -32,17 +32,22 @@ export default function CountUp({
     const ref = useRef<HTMLSpanElement>(null);
     const motionValue = useMotionValue(direction === "down" ? to : from);
 
-    const damping = 20 + 40 * (1 / duration);
-    const stiffness = 100 * (1 / duration);
+    const numberSize = Math.abs(to - from);
+    const normalizedDuration = duration;
+
+    const baseDamping = 30;
+    const baseStiffness = 120;
+
+    const damping = baseDamping * (normalizedDuration / 1);
+    const stiffness = baseStiffness / (normalizedDuration / 1);
 
     const springValue = useSpring(motionValue, {
         damping,
         stiffness,
     });
 
-    const isInView = useInView(ref, { once: true, margin: "0px" });
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    // Get number of decimal places in a number
     const getDecimalPlaces = (num: number): number => {
         const str = num.toString();
         if (str.includes(".")) {

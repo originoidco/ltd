@@ -6,9 +6,9 @@ export const projectsList: Project[] = [
         description:
             "Effortlessly share, showcase, and link any type of content with full customization and security, ensuring your work stays protected and uniquely yours.",
         link: "https://originoid.co?ref=originoidltd",
-        stats: "26,100+ Waitlisted Creators",
+        stats: "27,000+ Waitlisted",
         icon: "/app-icons/originoid-icon-1028.png",
-        release: "Releasing ??? 2025",
+        release: "Releasing Soon",
     },
     {
         name: "skowt.cc",

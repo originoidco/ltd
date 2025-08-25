@@ -156,7 +156,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         </>
     );
 
-    // If href is provided, render as Link
+    // if href is provided, render as link
     if (href && !disabled) {
         return (
             <Link
@@ -174,7 +174,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         );
     }
 
-    // Otherwise render as button
+    // otherwise render as button
     return (
         <button
             ref={(el) => {

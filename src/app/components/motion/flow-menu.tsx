@@ -63,10 +63,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
             rect.height,
         );
 
-        // Kill any existing animations first
+        // kill any existing animations first
         gsap.killTweensOf([marqueeRef.current, marqueeInnerRef.current]);
 
-        // Find the marquee animation element
+        // find the marquee animation element
         const marqueeAnimElement = marqueeInnerRef.current?.querySelector(
             ".animate-marquee",
         ) as HTMLElement;
@@ -84,7 +84,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
                 y: "0%",
                 ease: "power2.easeOut",
                 onComplete: () => {
-                    // Ensure CSS animation continues smoothly
+                    // ensure css animation continues smoothly
                     const marqueeElement =
                         marqueeInnerRef.current?.querySelector(
                             ".animate-marquee",
@@ -107,7 +107,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             rect.height,
         );
 
-        // Kill any existing animations first
+        // kill any existing animations first
         gsap.killTweensOf([marqueeRef.current, marqueeInnerRef.current]);
 
         const tl = gsap.timeline({ defaults: animationDefaults });
