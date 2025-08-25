@@ -13,14 +13,14 @@ export default function Hero() {
                 <div className="flex flex-col items-center justify-center">
                     <img
                         src="/app-icons/originoid-icon-1028.png"
-                        className="size-12 mb-4"
+                        className="size-20 mb-4"
                     />
-                    <h1 className="text-[#F8F8F8] text-4xl md:text-5xl font-instrument-serif text-center px-4 max-w-3xl pointer-events-auto select-text">
+                    <h1 className="text-[#F8F8F8] text-5xl md:text-6xl font-instrument-serif text-center px-4 max-w-5xl pointer-events-auto select-text">
                         Originoid LTD creates software & platforms that serve
                         millions worldwide.
                     </h1>
                     <AnimatedButton
-                        className="mt-6 p-2 pointer-events-auto"
+                        className="mt-8 p-3 pointer-events-auto"
                         onClick={() => {
                             router.push("#stats");
                         }}

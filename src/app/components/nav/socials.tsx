@@ -1,6 +1,7 @@
 import FlowingMenu from "../motion/flow-menu";
+import { type FlowingMenuProps } from "../motion/flow-menu";
 
-const demoItems = [
+const demoItems: FlowingMenuProps["items"] = [
     {
         link: "https://x.com/originoidco",
         text: "Twitter",
@@ -17,7 +18,7 @@ const demoItems = [
         link: "https://discord.gg/noid",
         text: "Discord",
         secondaryText: "discord.gg/noid",
-    }
+    },
 
     // {
     //     link: "mailto:marcel@originoid.co",

@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { Open_Sans, Instrument_Serif } from "next/font/google";
 import PillNav from "./components/nav/nav";
 import LenisProvider from "./components/providers/lenis-provider";
+import { DynamicScrollbar } from "./components/ui/dynamic-scrollbar";
 
 const geistSans = GeistSans;
 
@@ -36,15 +37,19 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${openSans.variable} ${instrumentSerif.variable} antialiased w-full`}
             >
                 <LenisProvider>
+                    <DynamicScrollbar />
                     <PillNav
                         logo={"/originoid-dark.svg"}
                         logoAlt="logo"
                         items={[
-                            { label: "Home", href: "/#" },
                             { label: "Projects", href: "/#projects" },
                             {
-                                label: "Socials",
-                                href: "/#socials",
+                                label: "Vision",
+                                href: "/#vision",
+                            },
+                            {
+                                label: "Team",
+                                href: "/#team",
                             },
                         ]}
                         activeHref="/"

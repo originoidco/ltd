@@ -12,6 +12,7 @@ export type PillNavItem = {
 export interface PillNavProps {
     logo: string;
     logoAlt?: string;
+    logoHref?: string;
     items: PillNavItem[];
     activeHref?: string;
     className?: string;
@@ -27,6 +28,7 @@ export interface PillNavProps {
 const PillNav: React.FC<PillNavProps> = ({
     logo,
     logoAlt = "Logo",
+    logoHref = "/#hero",
     items,
     activeHref,
     className = "",
@@ -64,12 +66,16 @@ const PillNav: React.FC<PillNavProps> = ({
             const heroSection = document.getElementById("hero");
             const statsSection = document.getElementById("stats");
             const projectsSection = document.getElementById("projects");
+            const visionSection = document.getElementById("vision");
+            const teamSection = document.getElementById("team");
             const socialsSection = document.getElementById("socials");
 
             if (
                 !heroSection ||
                 !statsSection ||
                 !projectsSection ||
+                !visionSection ||
+                !teamSection ||
                 !socialsSection
             )
                 return;
@@ -80,6 +86,8 @@ const PillNav: React.FC<PillNavProps> = ({
             const heroRect = heroSection.getBoundingClientRect();
             const statsRect = statsSection.getBoundingClientRect();
             const projectsRect = projectsSection.getBoundingClientRect();
+            const visionRect = visionSection.getBoundingClientRect();
+            const teamRect = teamSection.getBoundingClientRect();
             const socialsRect = socialsSection.getBoundingClientRect();
 
             if (navCenter >= heroRect.top && navCenter <= heroRect.bottom) {
@@ -94,6 +102,16 @@ const PillNav: React.FC<PillNavProps> = ({
                 navCenter <= projectsRect.bottom
             ) {
                 targetTheme = 0; // light navbar for dark projects section
+            } else if (
+                navCenter >= visionRect.top &&
+                navCenter <= visionRect.bottom
+            ) {
+                targetTheme = 1; // dark navbar for light vision section
+            } else if (
+                navCenter >= teamRect.top &&
+                navCenter <= teamRect.bottom
+            ) {
+                targetTheme = 0; // light navbar for dark team section
             } else if (
                 navCenter >= socialsRect.top &&
                 navCenter <= socialsRect.bottom
@@ -445,9 +463,9 @@ const PillNav: React.FC<PillNavProps> = ({
                 aria-label="Primary"
                 style={cssVars}
             >
-                {isRouterLink(items?.[0]?.href) ? (
+                {isRouterLink(logoHref) ? (
                     <Link
-                        href={items[0].href}
+                        href={logoHref}
                         aria-label="Home"
                         onMouseEnter={handleLogoEnter}
                         role="menuitem"
@@ -470,7 +488,7 @@ const PillNav: React.FC<PillNavProps> = ({
                     </Link>
                 ) : (
                     <a
-                        href={items?.[0]?.href || "#"}
+                        href={logoHref}
                         aria-label="Home"
                         onMouseEnter={handleLogoEnter}
                         ref={(el) => {
@@ -549,7 +567,7 @@ const PillNav: React.FC<PillNavProps> = ({
                                     </span>
                                     {isActive && (
                                         <span
-                                            className="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-3 h-3 rounded-full z-[4]"
+                                            className="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-2 h-2 rounded-full z-[4]"
                                             style={{
                                                 background:
                                                     "var(--base, #0C0A09)",
@@ -561,7 +579,7 @@ const PillNav: React.FC<PillNavProps> = ({
                             );
 
                             const basePillClasses =
-                                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-semibold text-[16px] leading-[0] uppercase tracking-[0.2px] whitespace-nowrap cursor-pointer px-0";
+                                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border text-[18px] leading-[0] font-instrument-serif  whitespace-nowrap cursor-pointer px-0";
 
                             return (
                                 <li
@@ -658,7 +676,7 @@ const PillNav: React.FC<PillNavProps> = ({
                         };
 
                         const linkClasses =
-                            "block py-3 px-4 text-[16px] font-medium rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
+                            "block py-3 px-4 text-[16px] font-instrument-serif rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
 
                         return (
                             <li key={item.href}>

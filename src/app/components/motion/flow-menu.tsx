@@ -11,7 +11,7 @@ interface MenuItemProps {
     image?: string;
 }
 
-interface FlowingMenuProps {
+export interface FlowingMenuProps {
     items?: MenuItemProps[];
 }
 
