@@ -5,13 +5,13 @@ import { ProjectCard } from "../ui/project-card";
 export function Projects() {
     return (
         <section
-            className="w-full bg-[#0C0A09] text-white mx-auto text-center py-20 px-6"
+            className="w-full bg-[#0C0A09] text-[#F8F8F8] mx-auto py-20 mb-20 px-6"
             id="projects"
         >
-            <h2 className="text-3xl md:text-4xl mb-8 font-instrument-serif">
+            <h2 className="text-3xl md:text-4xl mb-20 font-instrument-serif text-center">
                 Current Projects
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="space-y-32">
                 {projectsList.map((project, index) => (
                     <ProjectCard key={index} project={project} />
                 ))}

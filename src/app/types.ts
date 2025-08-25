@@ -6,4 +6,6 @@ export type Project = {
     icon: string;
     release: string;
     backgroundUrl?: string;
+    demoUrl?: string;
+    layout?: "left" | "right";
 };

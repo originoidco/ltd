@@ -4,13 +4,13 @@
 
 :root {
     --background: #0c0a09;
-    --foreground: #dcddd7;
+    --foreground: #f8f8f8;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0c0a09;
-        --foreground: #dcddd7;
+        --foreground: #f8f8f8;
     }
 }
 
@@ -22,10 +22,10 @@ body {
 
 @layer base {
     ::-moz-selection {
-        @apply bg-white text-background;
+        @apply bg-[#F8F8F8] text-background;
     }
     ::selection {
-        @apply bg-white text-background;
+        @apply bg-[#F8F8F8] text-background;
     }
 
     html {

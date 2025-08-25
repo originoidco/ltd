@@ -15,7 +15,7 @@ export default function Hero() {
                         src="/app-icons/originoid-icon-1028.png"
                         className="size-12 mb-4"
                     />
-                    <h1 className="text-white text-4xl md:text-5xl font-instrument-serif text-center px-4 max-w-3xl pointer-events-auto select-text">
+                    <h1 className="text-[#F8F8F8] text-4xl md:text-5xl font-instrument-serif text-center px-4 max-w-3xl pointer-events-auto select-text">
                         Originoid LTD creates software & platforms that serve
                         millions worldwide.
                     </h1>

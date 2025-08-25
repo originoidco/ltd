@@ -410,15 +410,15 @@ const PillNav: React.FC<PillNavProps> = ({
     };
 
     // smooth dynamic colors based on colorMix (flipped: 0 = light theme, 1 = dark theme)
-    const dynamicBaseColor = interpolateColor("#ffffff", "#0C0A09", colorMix);
-    const dynamicPillColor = interpolateColor("#0C0A09", "#ffffff", colorMix);
+    const dynamicBaseColor = interpolateColor("#F8F8F8", "#0C0A09", colorMix);
+    const dynamicPillColor = interpolateColor("#0C0A09", "#F8F8F8", colorMix);
     const dynamicHoverTextColor = interpolateColor(
         "#0C0A09",
-        "#ffffff",
+        "#F8F8F8",
         colorMix,
     );
     const dynamicPillTextColor = interpolateColor(
-        "#ffffff",
+        "#F8F8F8",
         "#0C0A09",
         colorMix,
     );

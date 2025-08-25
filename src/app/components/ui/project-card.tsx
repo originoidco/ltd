@@ -6,54 +6,63 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-    return (
-        <Link
-            href={project.link}
-            target="_blank"
-            key={project.name.replace(/[\s.]/g, "-").toLowerCase()}
-            rel="noopener noreferrer"
-            className="rounded-md text-left overflow-hidden h-[450px] relative group transition-all duration-150 ease-in-out"
-        >
-            <div
-                className={`absolute inset-0 z-0 transition-all duration-150 ease-in-out origin-center
-                ${project.backgroundUrl ? "bg-cover bg-center" : "bg-gradient-to-br from-[#040606] to-[#2C3D44]"}`}
-                style={{
-                    backgroundImage: project.backgroundUrl
-                        ? `url(${project.backgroundUrl})`
-                        : undefined,
-                    backgroundPosition: "center",
-                }}
-            />
+    const isLeftLayout = project.layout === "left";
 
-            <div className="relative z-10 p-6 flex justify-between items-start h-full flex-col transition-all duration-200 bg-black/30 hover:bg-black/20">
-                <div className="w-full flex justify-between items-center">
-                    <div className="flex items-center gap-3">
+    return (
+        <div className="w-full max-w-5xl mx-auto">
+            <div
+                className={`flex flex-col md:flex-row md:items-center gap-8 md:gap-12 ${isLeftLayout ? "md:flex-row" : "md:flex-row-reverse"}`}
+            >
+                <div className="flex-1 md:aspect-[800/365] flex flex-col md:justify-between space-y-4 md:space-y-0">
+                    <div className="flex items-center gap-2 p-0 m-0">
                         <img
                             src={project.icon}
-                            className="size-12 rounded-xl"
+                            className="size-16 rounded-xl"
                             alt={project.name}
                         />
                         <div>
-                            <p className="font-medium text-lg text-white">
+                            <h3 className="text-xl text-[#F8F8F8] font-instrument-serif">
                                 {project.name}
-                            </p>
-                            <p className="text-sm text-white/80">
+                            </h3>
+                            <p className="text-[#F8F8F8]/70">
                                 {project.release}
                             </p>
                         </div>
                     </div>
+
+                    <p className="text-[#F8F8F8]/80">{project.description}</p>
+
+                    <div className="flex items-center gap-4">
+                        <div className="inline-block bg-[#F8F8F8] text-[#0C0A09] rounded-full px-6 py-2 text-sm font-medium selection:bg-[#0C0A09] selection:text-[#F8F8F8]">
+                            {project.stats}
+                        </div>
+                        <Link
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-[#F8F8F8]/20 text-[#F8F8F8] rounded-full px-6 py-2 text-sm font-medium hover:bg-[#F8F8F8]/30 transition-colors"
+                        >
+                            Visit Project →
+                        </Link>
+                    </div>
                 </div>
 
-                <div className="mt-auto">
-                    <p className="text-white mb-4 max-w-xs">
-                        {project.description}
-                    </p>
-
-                    <div className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm text-white">
-                        {project.stats}
+                <div className="flex-1">
+                    <div
+                        className={`aspect-[800/365] border-zinc-800 border rounded-lg overflow-hidden ${project.demoUrl ? "bg-[#0C0A09]" : "bg-[#F8F8F8]"}`}
+                    >
+                        {project.demoUrl ? (
+                            <img
+                                src={project.demoUrl}
+                                alt={`${project.name} demo`}
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-[#F8F8F8]" />
+                        )}
                     </div>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
