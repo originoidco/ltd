@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { Open_Sans, Instrument_Serif } from "next/font/google";
-import PillNav from "./components/nav/nav";
 import LenisProvider from "./components/providers/lenis-provider";
 import { DynamicScrollbar } from "./components/ui/dynamic-scrollbar";
 
@@ -38,25 +37,6 @@ export default function RootLayout({
             >
                 <LenisProvider>
                     <DynamicScrollbar />
-                    <PillNav
-                        logo={"/originoid-dark.svg"}
-                        logoAlt="logo"
-                        items={[
-                            { label: "Projects", href: "/#projects" },
-                            {
-                                label: "Vision",
-                                href: "/#vision",
-                            },
-                            {
-                                label: "Team",
-                                href: "/#team",
-                            },
-                        ]}
-                        activeHref="/"
-                        className="custom-nav"
-                        ease="power2.easeOut"
-                        initialLoadAnimation={false}
-                    />
                     {children}
                 </LenisProvider>
             </body>
