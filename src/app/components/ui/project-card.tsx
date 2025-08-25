@@ -42,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                             rel="noopener noreferrer"
                             className="inline-block bg-[#F8F8F8]/20 text-[#F8F8F8] rounded-full px-6 py-2 text-sm font-medium hover:bg-[#F8F8F8]/30 transition-colors"
                         >
-                            Visit Project →
+                            View →
                         </Link>
                     </div>
                 </div>

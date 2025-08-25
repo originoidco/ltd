@@ -6,7 +6,7 @@ export const projectsList: Project[] = [
         description:
             "skowt.cc (prev. wanderer.moe) is a free, open-source website that makes it easy to search and download thousands of assets from a wide range of games.",
         link: "https://skowt.cc?ref=originoidltd",
-        stats: "300K+ Monthly Active Users",
+        stats: "300K+ MAU",
         icon: "/app-icons/skowt-icon-1028.png",
         demoUrl: "/demos/skowt-demo.gif",
         layout: "left",
@@ -18,7 +18,7 @@ export const projectsList: Project[] = [
         description:
             "Effortlessly share, showcase, and link any type of content with full customization and security, ensuring your work stays protected and uniquely yours.",
         link: "https://originoid.co?ref=originoidltd",
-        stats: "27K+ Actively Waitlisted",
+        stats: "27K+ Waitlisted",
         icon: "/app-icons/originoid-icon-1028.png",
         demoUrl: "/demos/originoid-character-demo.gif",
         release: "Releasing 2025",
