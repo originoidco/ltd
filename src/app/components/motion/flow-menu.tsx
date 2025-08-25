@@ -136,7 +136,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             ref={itemRef}
         >
             <a
-                className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[#0C0A09] text-[4vh]"
+                className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[#0C0A09] text-[3vh]"
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -158,7 +158,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
                         {Array.from({ length: 20 }).map((_, idx) => (
                             <span
                                 key={idx}
-                                className="text-white font-instrument-serif font-normal text-[4vh] leading-[1.2] whitespace-nowrap flex-shrink-0 flex items-center h-full"
+                                className="text-white font-instrument-serif font-normal text-[3vh] leading-[1.2] whitespace-nowrap flex-shrink-0 flex items-center h-full"
                             >
                                 {marqueeText}
                             </span>

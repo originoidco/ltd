@@ -28,7 +28,7 @@ const demoItems = [
 
 export function Socials() {
     return (
-        <div className="h-[600px] w-full bg-white" id="socials">
+        <div className="h-[500px] w-full bg-white" id="socials">
             <FlowingMenu items={demoItems} />
         </div>
     );
