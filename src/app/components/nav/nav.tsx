@@ -264,36 +264,43 @@ const PillNav: React.FC<PillNavProps> = ({
     const handleEnter = (i: number) => {
         const tl = tlRefs.current[i];
         if (!tl) return;
+        const circle = circleRefs.current[i];
+        const pill = circle?.parentElement as HTMLElement;
+
         activeTweenRefs.current[i]?.kill();
         activeTweenRefs.current[i] = tl.tweenTo(tl.duration(), {
             duration: 0.3,
             ease,
             overwrite: "auto",
+            onUpdate: function () {
+                if (pill && this.progress() > 0.35) {
+                    pill.style.background = "var(--base, #0C0A09)";
+                }
+            },
         });
     };
 
     const handleLeave = (i: number) => {
         const tl = tlRefs.current[i];
         if (!tl) return;
+        const circle = circleRefs.current[i];
+        const pill = circle?.parentElement as HTMLElement;
+
         activeTweenRefs.current[i]?.kill();
         activeTweenRefs.current[i] = tl.tweenTo(0, {
             duration: 0.2,
             ease,
             overwrite: "auto",
+            onStart: () => {
+                if (pill) {
+                    pill.style.background = "var(--pill-bg, #fff)";
+                }
+            },
         });
     };
 
     const handleLogoEnter = () => {
-        const img = logoImgRef.current;
-        if (!img) return;
-        logoTweenRef.current?.kill();
-        gsap.set(img, { rotate: 0 });
-        logoTweenRef.current = gsap.to(img, {
-            rotate: 360,
-            duration: 0.2,
-            ease,
-            overwrite: "auto",
-        });
+        // no animation
     };
 
     const toggleMobileMenu = () => {

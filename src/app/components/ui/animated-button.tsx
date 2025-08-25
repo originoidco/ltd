@@ -110,24 +110,38 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     const handleEnter = () => {
         if (disabled) return;
         const tl = tlRef.current;
+        const button = buttonRef.current;
         if (!tl) return;
         activeTweenRef.current?.kill();
         activeTweenRef.current = tl.tweenTo(tl.duration(), {
             duration: 0.3,
             ease: "power3.easeOut",
             overwrite: "auto",
+            onUpdate: function () {
+                if (button && this.progress() > 0.35) {
+                    (button as HTMLElement).style.backgroundColor =
+                        hoverBackgroundColor;
+                }
+            },
         });
     };
 
     const handleLeave = () => {
         if (disabled) return;
         const tl = tlRef.current;
+        const button = buttonRef.current;
         if (!tl) return;
         activeTweenRef.current?.kill();
         activeTweenRef.current = tl.tweenTo(0, {
             duration: 0.2,
             ease: "power3.easeOut",
             overwrite: "auto",
+            onStart: () => {
+                if (button) {
+                    (button as HTMLElement).style.backgroundColor =
+                        backgroundColor;
+                }
+            },
         });
     };
 

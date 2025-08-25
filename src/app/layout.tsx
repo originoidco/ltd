@@ -50,6 +50,7 @@ export default function RootLayout({
                         activeHref="/"
                         className="custom-nav"
                         ease="power2.easeOut"
+                        initialLoadAnimation={false}
                     />
                     {children}
                 </LenisProvider>
