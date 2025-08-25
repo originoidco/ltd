@@ -17,18 +17,18 @@ const demoItems = [
         link: "https://discord.gg/noid",
         text: "Discord",
         secondaryText: "discord.gg/noid",
-    },
+    }
 
-    {
-        link: "mailto:marcel@originoid.co",
-        text: "Contact",
-        secondaryText: "send an email",
-    },
+    // {
+    //     link: "mailto:marcel@originoid.co",
+    //     text: "Contact",
+    //     secondaryText: "send an email",
+    // },
 ];
 
 export function Socials() {
     return (
-        <div className="h-[350px] w-full bg-[#F8F8F8]" id="socials">
+        <div className="h-[250px] w-full bg-[#F8F8F8]" id="socials">
             <FlowingMenu items={demoItems} />
         </div>
     );
