@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
     async redirects() {
         return [
             {
-                source: "/apply",
-                destination: "https://forms.gle/QpUJkTwvakYs7Cvq6",
+                source: "/careers",
+                destination: "https://originoid-careers.notion.site/",
                 permanent: true,
             },
         ];

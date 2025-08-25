@@ -23,6 +23,11 @@ export default function Home() {
                         label: "Team",
                         href: "/#team",
                     },
+                    {
+                        label: "Careers",
+                        href: "/careers",
+                        external: true,
+                    },
                 ]}
                 activeHref="/"
                 className="custom-nav"

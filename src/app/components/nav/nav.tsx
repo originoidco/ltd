@@ -7,6 +7,7 @@ export type PillNavItem = {
     label: string;
     href: string;
     ariaLabel?: string;
+    external?: boolean;
 };
 
 export interface PillNavProps {
@@ -400,7 +401,8 @@ const PillNav: React.FC<PillNavProps> = ({
         href.startsWith("tel:") ||
         href.startsWith("#");
 
-    const isRouterLink = (href?: string) => href && !isExternalLink(href);
+    const isRouterLink = (href?: string, external?: boolean) =>
+        href && !isExternalLink(href) && !external;
 
     // smooth color interpolation using mix value (0 = dark theme, 1 = light theme)
     const interpolateColor = (
@@ -587,7 +589,7 @@ const PillNav: React.FC<PillNavProps> = ({
                                     role="none"
                                     className="flex h-full"
                                 >
-                                    {isRouterLink(item.href) ? (
+                                    {isRouterLink(item.href, item.external) ? (
                                         <Link
                                             role="menuitem"
                                             href={item.href}
@@ -609,6 +611,16 @@ const PillNav: React.FC<PillNavProps> = ({
                                             style={pillStyle}
                                             aria-label={
                                                 item.ariaLabel || item.label
+                                            }
+                                            target={
+                                                item.external
+                                                    ? "_blank"
+                                                    : undefined
+                                            }
+                                            rel={
+                                                item.external
+                                                    ? "noopener noreferrer"
+                                                    : undefined
                                             }
                                             onMouseEnter={() => handleEnter(i)}
                                             onMouseLeave={() => handleLeave(i)}
@@ -680,7 +692,7 @@ const PillNav: React.FC<PillNavProps> = ({
 
                         return (
                             <li key={item.href}>
-                                {isRouterLink(item.href) ? (
+                                {isRouterLink(item.href, item.external) ? (
                                     <Link
                                         href={item.href}
                                         className={linkClasses}
@@ -698,6 +710,14 @@ const PillNav: React.FC<PillNavProps> = ({
                                         href={item.href}
                                         className={linkClasses}
                                         style={defaultStyle}
+                                        target={
+                                            item.external ? "_blank" : undefined
+                                        }
+                                        rel={
+                                            item.external
+                                                ? "noopener noreferrer"
+                                                : undefined
+                                        }
                                         onMouseEnter={hoverIn}
                                         onMouseLeave={hoverOut}
                                         onClick={() =>
