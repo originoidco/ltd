@@ -10,6 +10,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                "open-sans": "var(--font-open-sans)",
                 "instrument-serif": "var(--font-instrument-serif)",
             },
             colors: {
@@ -20,6 +21,18 @@ export default {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
+            },
+            translate: {
+                "101": "101%",
+            },
+            keyframes: {
+                marquee: {
+                    "0%": { transform: "translateX(0%)" },
+                    "100%": { transform: "translateX(-50%)" },
+                },
+            },
+            animation: {
+                marquee: "marquee 20s linear infinite",
             },
         },
     },

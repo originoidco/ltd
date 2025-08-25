@@ -4,13 +4,13 @@
 
 :root {
     --background: #0c0a09;
-    --foreground: #dcddd7;
+    --foreground: #f8f8f8;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0c0a09;
-        --foreground: #dcddd7;
+        --foreground: #f8f8f8;
     }
 }
 
@@ -22,13 +22,46 @@ body {
 
 @layer base {
     ::-moz-selection {
-        @apply bg-white text-background;
+        @apply bg-[#F8F8F8] text-background;
     }
     ::selection {
-        @apply bg-white text-background;
+        @apply bg-[#F8F8F8] text-background;
+    }
+
+    html {
+        @apply scroll-smooth;
     }
 
     :root {
         --radius: 0.5rem;
+        --scrollbar-track: #1f1f1f;
+        --scrollbar-thumb: #f8f8f8;
+        --scrollbar-thumb-hover: #ffffff;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+    }
+
+    /* Firefox scrollbar */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
     }
 }
