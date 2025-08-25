@@ -29,16 +29,16 @@ const team = [
         nickname: "ambre",
         role: "Advisor, Community Moderator",
         description:
-            "Cranked at arsenal. Community moderator also known as Originoid's unofficial official Discord log watcher.",
+            "Cranked at arsenal. Community Moderator also known as Originoid's unofficial official Discord log watcher.",
         hasImg: true,
     },
     {
         firstName: "Val",
         nickname: "Ceewe",
-        role: "Advisor",
+        role: "Advisor, Moderator",
         hasImg: true,
         description:
-            "Used to draw with just one finger on a 5 year old phone that had a cracked screen. Advisor for Originoid.",
+            "Used to draw with just one finger on a 5 year old phone that had a cracked screen. Community & Platform Mod.",
     },
     {
         nickname: "77",
