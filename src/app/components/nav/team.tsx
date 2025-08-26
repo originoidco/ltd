@@ -45,7 +45,7 @@ const team = [
         role: "Platform Moderator",
         hasImg: true,
         description:
-            "Moderately passionate over Umamusume. Indecisive in a good way. Platform Moderator for Originoid.",
+            "Moderately passionate over Umamusume. Quit LoL to become a Founding Platform Moderator for Originoid.",
     },
 ];
 
