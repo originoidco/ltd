@@ -22,8 +22,16 @@ const team = [
         nickname: "dromzeh",
         role: "Founder, Lead Developer",
         description:
-            "Programming since consciousness. Handles everything development and direction related.",
+            "Programming since consciousness. Handles all development and overall project direction.",
         hasImg: true,
+    },
+    {
+        firstName: "Em",
+        nickname: "detectve",
+        role: "Software Engineer Intern",
+        hasImg: true,
+        description:
+            "Makes unspeakable clutches when it comes to Uno. Frontend Software Engineer Intern for Originoid's Website.",
     },
     {
         nickname: "ambre",
