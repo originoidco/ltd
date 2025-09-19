@@ -25,6 +25,13 @@ const team = [
             "Programming since consciousness. Handles all development and overall project direction.",
         hasImg: true,
     },
+    {
+        nickname: "77",
+        role: "Community Manager",
+        hasImg: true,
+        description:
+            "Moderately passionate over Umamusume. Handles Community Management and Platform Moderation.",
+    },
     // {
     //     firstName: "Em",
     //     nickname: "detectve",
@@ -47,13 +54,6 @@ const team = [
         hasImg: true,
         description:
             "Used to draw with just one finger on a 5 year old phone that had a cracked screen. Community & Platform Mod.",
-    },
-    {
-        nickname: "77",
-        role: "Platform Moderator",
-        hasImg: true,
-        description:
-            "Moderately passionate over Umamusume. Quit LoL to become a Founding Platform Moderator for Originoid.",
     },
 ];
 
